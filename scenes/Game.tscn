@@ -43,6 +43,7 @@ shape = SubResource("RectangleShape2D_de123")
 
 [node name="Ball" parent="." instance=ExtResource("2_jew0v")]
 position = Vector2(950, 843)
+_speed = 500.0
 
 [node name="BrakeBrick" parent="." instance=ExtResource("4_ujgtj")]
 position = Vector2(720, 56)

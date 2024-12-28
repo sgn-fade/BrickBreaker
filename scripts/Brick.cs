@@ -5,27 +5,25 @@ public partial class Brick : StaticBody2D
 {
     private Color[] Colors =
     {
-        new Color(1, 0, 0),
-        new Color(1, 1, 0),
-        new Color(0, 1, 0),
-        new Color(0, 0, 1),
-        new Color(1, 0.75f, 0.8f)
+        Godot.Colors.Red,
+        Godot.Colors.Yellow,
+        Godot.Colors.Green,
+        Godot.Colors.Blue,
+        Godot.Colors.Cyan,
     };
 
     [Export] private int _hitCount = 1;
     [Export] private Sprite2D _sprite;
     [Export] private CollisionShape2D _collisionShape;
 
-    private Color GetRandomColor()
+
+    public override void _Ready()
     {
-        var random = new Random();
-        int index = random.Next(Colors.Length);
-        return Colors[index];
+        Modulate = Colors[GD.Randi() % Colors.Length];
     }
 
     public void Hit()
     {
-        GD.Print(1);
         if (_hitCount > 0)
         {
             _hitCount--;
