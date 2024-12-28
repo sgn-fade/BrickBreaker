@@ -35,7 +35,12 @@ public partial class Game : Node
 			ball.QueueFree();
 
 			if (BallsCount == 0)
-				CreateBall(new Vector2(970, 850), new Vector2(0, -1));
+			{
+				float randomSpread = (float)GD.RandRange(-Mathf.Pi / 4 , Mathf.Pi / 4);
+
+				CreateBall(new Vector2(970, 850), new Vector2(0, -1).Rotated(randomSpread));
+				GD.Print(1);
+			}
 		}
 	}
 }

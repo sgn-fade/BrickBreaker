@@ -7,8 +7,7 @@
 [node name="BrakeBrick" instance=ExtResource("1_3kb43")]
 modulate = Color(0, 0.772549, 0.780392, 0.917647)
 script = ExtResource("2_8iiyu")
-Factor = 3
-SpreadAngle = 30
+Factor = 2
 
 [node name="Sprite2D" parent="." index="1"]
 modulate = Color(1, 1, 1, 0.972549)

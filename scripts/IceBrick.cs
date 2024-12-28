@@ -7,7 +7,6 @@ namespace BrickBraker.scripts;
 public partial class IceBrick : StaticBody2D, IBreakable
 {
     [Export] public int Factor {get; set;}
-    [Export] public int SpreadAngle {get; set;}
     [Export] private AnimationPlayer _animationPlayer;
     public void Hit()
     {
@@ -16,11 +15,10 @@ public partial class IceBrick : StaticBody2D, IBreakable
 
     public void ApplyEffect(Ball ball)
     {
-        var rand = new Random();
         for (var i = 0; i < Factor; i++)
         {
-            var randomSpread = (float)(rand.NextDouble() - 0.5) * Mathf.DegToRad(SpreadAngle);
-            Game.Instance.CreateBall(ball.Position, ball.Velocity);
+            float randomSpread = (float)GD.RandRange(-Mathf.Pi / 4 , Mathf.Pi / 4);
+            Game.Instance.CreateBall(ball.Position, ball.Velocity.Rotated(randomSpread));
         }
     }
 }
