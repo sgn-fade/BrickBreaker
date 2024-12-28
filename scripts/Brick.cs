@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BrakeBrick : StaticBody2D
+public partial class Brick : StaticBody2D
 {
     private Color[] Colors =
     {
@@ -18,13 +18,14 @@ public partial class BrakeBrick : StaticBody2D
 
     private Color GetRandomColor()
     {
-        Random random = new Random();
+        var random = new Random();
         int index = random.Next(Colors.Length);
         return Colors[index];
     }
 
     public void Hit()
     {
+        GD.Print(1);
         if (_hitCount > 0)
         {
             _hitCount--;

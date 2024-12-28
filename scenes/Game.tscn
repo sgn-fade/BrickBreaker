@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=7 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
 [ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="2_jew0v"]
 [ext_resource type="PackedScene" path="res://PlayerBrick.tscn" id="3_or164"]
+[ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
 size = Vector2(599, 9)
@@ -47,3 +48,6 @@ position = Vector2(950, 843)
 position = Vector2(908, 966)
 scale = Vector2(0.5, 0.5)
 Speed = 300.0
+
+[node name="BrakeBrick" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(821, 182)
