@@ -1,7 +1,9 @@
 using Godot;
 using System;
+using BrickBraker.scenes;
+using BrickBraker.scripts;
 
-public partial class Brick : StaticBody2D
+public partial class Brick : StaticBody2D, IBreakable
 {
     private Color[] Colors =
     {
@@ -26,5 +28,10 @@ public partial class Brick : StaticBody2D
     {
         _hitCount--;
         if (_hitCount == 0) QueueFree();
+    }
+
+    public void ApplyEffect(Ball ball)
+    {
+        ball.Speed += 100;
     }
 }
