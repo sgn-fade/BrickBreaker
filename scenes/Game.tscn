@@ -1,19 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=10 format=3 uid="uid://duxfujedyw0vh"]
 
-[ext_resource type="Script" path="res://scripts/GameScript.cs" id="1_7eh8o"]
+[ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
 [ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="2_jew0v"]
 [ext_resource type="PackedScene" uid="uid://dfdkgtiywxjar" path="res://PlayerBrick.tscn" id="3_or164"]
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
+[ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="5_nxusd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
 size = Vector2(663.5, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_007ca"]
+size = Vector2(634, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de123"]
 size = Vector2(8.585, 998)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_7eh8o")
+script = ExtResource("1_0f2a5")
 _ballScene = ExtResource("2_jew0v")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -31,12 +35,12 @@ scale = Vector2(0.921951, 1.45804)
 [node name="Area2D" type="Area2D" parent="bounds"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bounds/Area2D"]
-position = Vector2(969, 1135)
+position = Vector2(968, 1154)
 shape = SubResource("RectangleShape2D_mlqss")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="bounds"]
 position = Vector2(960, 33)
-shape = SubResource("RectangleShape2D_mlqss")
+shape = SubResource("RectangleShape2D_007ca")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="bounds"]
 position = Vector2(654.292, 537)
@@ -135,6 +139,9 @@ position = Vector2(1200, 152)
 
 [node name="BrakeBrick30" parent="." instance=ExtResource("4_ujgtj")]
 position = Vector2(1200, 184)
+
+[node name="BrakeBrick31" parent="." instance=ExtResource("5_nxusd")]
+position = Vector2(1122, 714)
 
 [node name="PlayerBrick" parent="." instance=ExtResource("3_or164")]
 position = Vector2(961, 867)
