@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://dil7lg35gvs5w"]
+[gd_scene load_steps=5 format=3 uid="uid://dil7lg35gvs5w"]
+
+[ext_resource type="Script" path="res://scenes/Ball.cs" id="1_5xffh"]
+[ext_resource type="Texture2D" uid="uid://cuabsnqc5w5db" path="res://sprites/Ball.png" id="2_ny8dt"]
+
+[sub_resource type="Curve" id="Curve_6vg5k"]
+_data = [Vector2(0, 0.946327), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70fvs"]
 
 [node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_5xffh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(1, 1)
+amount = 40
+lifetime = 0.4
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 0)
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_6vg5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("2_ny8dt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_70fvs")
