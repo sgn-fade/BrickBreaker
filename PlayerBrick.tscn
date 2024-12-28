@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfdkgtiywxjar"]
+
+[ext_resource type="Script" path="res://PlayerBrick.cs" id="1_5ipjx"]
+[ext_resource type="Texture2D" uid="uid://dxqgjo2w8q3fa" path="res://sprites/PlayerPlate.png" id="2_ylca3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rygfy"]
+size = Vector2(88, 32)
+
+[node name="PlayerBrick" type="CharacterBody2D"]
+script = ExtResource("1_5ipjx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rygfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_ylca3")

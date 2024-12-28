@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://duxfujedyw0vh"]
+
+[ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
+[ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="2_jew0v"]
+[ext_resource type="PackedScene" uid="uid://dfdkgtiywxjar" path="res://PlayerBrick.tscn" id="3_or164"]
+[ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
+size = Vector2(599, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de123"]
+size = Vector2(8.585, 998)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jr1yr")
+stretch_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 538)
+scale = Vector2(0.921951, 1.45804)
+
+[node name="bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds"]
+position = Vector2(961.5, 1043.5)
+shape = SubResource("RectangleShape2D_mlqss")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="bounds"]
+position = Vector2(960, 33)
+shape = SubResource("RectangleShape2D_mlqss")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bounds"]
+position = Vector2(654.292, 537)
+shape = SubResource("RectangleShape2D_de123")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="bounds"]
+position = Vector2(1265, 539)
+shape = SubResource("RectangleShape2D_de123")
+
+[node name="Ball" parent="." instance=ExtResource("2_jew0v")]
+position = Vector2(950, 843)
+_speed = 500.0
+
+[node name="BrakeBrick" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(720, 56)
+
+[node name="BrakeBrick2" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(720, 88)
+
+[node name="BrakeBrick3" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(720, 120)
+
+[node name="BrakeBrick4" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(720, 152)
+
+[node name="BrakeBrick5" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(720, 184)
+
+[node name="BrakeBrick6" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(816, 56)
+
+[node name="BrakeBrick7" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(816, 88)
+
+[node name="BrakeBrick8" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(816, 120)
+
+[node name="BrakeBrick9" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(816, 152)
+
+[node name="BrakeBrick10" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(816, 184)
+
+[node name="BrakeBrick11" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(912, 56)
+
+[node name="BrakeBrick12" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(912, 88)
+
+[node name="BrakeBrick13" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(912, 120)
+
+[node name="BrakeBrick14" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(912, 152)
+
+[node name="BrakeBrick15" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(912, 184)
+
+[node name="BrakeBrick16" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1008, 56)
+
+[node name="BrakeBrick17" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1008, 88)
+
+[node name="BrakeBrick18" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1008, 120)
+
+[node name="BrakeBrick19" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1008, 152)
+
+[node name="BrakeBrick20" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1008, 184)
+
+[node name="BrakeBrick21" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1104, 56)
+
+[node name="BrakeBrick22" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1104, 88)
+
+[node name="BrakeBrick23" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1104, 120)
+
+[node name="BrakeBrick24" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1104, 152)
+
+[node name="BrakeBrick25" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1104, 184)
+
+[node name="BrakeBrick26" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1200, 56)
+
+[node name="BrakeBrick27" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1200, 88)
+
+[node name="BrakeBrick28" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1200, 120)
+
+[node name="BrakeBrick29" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1200, 152)
+
+[node name="BrakeBrick30" parent="." instance=ExtResource("4_ujgtj")]
+position = Vector2(1200, 184)
+
+[node name="PlayerBrick" parent="." instance=ExtResource("3_or164")]
+position = Vector2(952, 967)
+motion_mode = 1
+platform_on_leave = 2
+Speed = 300.0
