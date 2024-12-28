@@ -13,7 +13,6 @@ point_count = 2
 script = ExtResource("1_5xffh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-scale = Vector2(1, 1)
 amount = 40
 lifetime = 0.4
 emission_shape = 1
