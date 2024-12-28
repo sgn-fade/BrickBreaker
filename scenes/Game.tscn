@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://duxfujedyw0vh"]
+
+[ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
+size = Vector2(599, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de123"]
+size = Vector2(8.585, 998)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_jr1yr")
+stretch_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 538)
+scale = Vector2(0.921951, 1.45804)
+
+[node name="bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds"]
+position = Vector2(961.5, 1043.5)
+shape = SubResource("RectangleShape2D_mlqss")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="bounds"]
+position = Vector2(960, 33)
+shape = SubResource("RectangleShape2D_mlqss")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bounds"]
+position = Vector2(654.292, 537)
+shape = SubResource("RectangleShape2D_de123")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="bounds"]
+position = Vector2(1265, 539)
+shape = SubResource("RectangleShape2D_de123")
