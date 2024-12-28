@@ -17,7 +17,7 @@ public partial class Brick : StaticBody2D, IBreakable
     [Export] private int _hitCount = 1;
     [Export] private Sprite2D _sprite;
     [Export] private CollisionShape2D _collisionShape;
-
+    [Export] private AnimationPlayer _animationPlayer;
 
     public override void _Ready()
     {
@@ -27,7 +27,10 @@ public partial class Brick : StaticBody2D, IBreakable
     public void Hit()
     {
         _hitCount--;
-        if (_hitCount == 0) QueueFree();
+        if (_hitCount == 0)
+        {
+            _animationPlayer.Play("break");
+        }
     }
 
     public void ApplyEffect(Ball ball)
