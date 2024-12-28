@@ -137,4 +137,6 @@ position = Vector2(1200, 184)
 
 [node name="PlayerBrick" parent="." instance=ExtResource("3_or164")]
 position = Vector2(952, 967)
+motion_mode = 1
+platform_on_leave = 2
 Speed = 300.0

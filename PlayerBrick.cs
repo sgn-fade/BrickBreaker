@@ -7,19 +7,7 @@ public partial class PlayerBrick : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 velocity = Vector2.Zero;
-
-        if (Input.IsActionPressed("move_right"))
-        {
-            velocity.X += Speed;
-        }
-        if (Input.IsActionPressed("move_left"))
-        {
-            velocity.X -= Speed;
-        }
-
-        Velocity = velocity;
-        
+        Velocity = Velocity with { X = Input.GetAxis("move_left", "move_right") * Speed};
         MoveAndSlide();
     }
 }

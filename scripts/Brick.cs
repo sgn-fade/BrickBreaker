@@ -24,18 +24,7 @@ public partial class Brick : StaticBody2D
 
     public void Hit()
     {
-        if (_hitCount > 0)
-        {
-            _hitCount--;
-            Break();
-        }
-    }
-
-    public void Break()
-    {
-        if (_hitCount >= 0)
-        {
-            QueueFree();
-        }
+        _hitCount--;
+        if (_hitCount == 0) QueueFree();
     }
 }
