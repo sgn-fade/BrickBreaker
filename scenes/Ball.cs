@@ -9,7 +9,7 @@ public partial class Ball : CharacterBody2D
 
     public override void _Ready()
     {
-        Velocity = new Vector2(1, -1).Rotated(Rotation);
+        Velocity = new Vector2(1, -1).Rotated(Rotation).Normalized();
     }
 
 
