@@ -20,8 +20,6 @@ public partial class Ball : CharacterBody2D
             Velocity = Velocity.Bounce(ReflectedNormal).Normalized();
             if (collision.GetCollider() is IBreakable brick)
             {
-                GD.Print(Velocity);
-
                 brick.Hit();
                 brick.ApplyEffect(this);
             }

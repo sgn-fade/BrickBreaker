@@ -125,6 +125,7 @@ texture = ExtResource("2_l62sm")
 emitting = false
 amount = 100
 lifetime = 0.3
+one_shot = true
 explosiveness = 1.0
 emission_shape = 3
 emission_rect_extents = Vector2(40, 10)
