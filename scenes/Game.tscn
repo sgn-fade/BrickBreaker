@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=11 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdkgtiywxjar" path="res://PlayerBrick.tscn" id="3_or164"]
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
 [ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="5_nxusd"]
+[ext_resource type="AudioStream" uid="uid://s6fgei1ttg4c" path="res://sounds/BadApple.MP3" id="7_inuqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
 size = Vector2(663.5, 126)
@@ -21,10 +22,13 @@ script = ExtResource("1_0f2a5")
 _ballScene = ExtResource("2_jew0v")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 651.0
+offset_top = 1038.0
+offset_right = 1755.0
+offset_bottom = 1659.0
+rotation = -1.5708
 texture = ExtResource("1_jr1yr")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 538)
@@ -147,5 +151,10 @@ position = Vector2(1008, 184)
 
 [node name="BrakeBrick34" parent="." instance=ExtResource("5_nxusd")]
 position = Vector2(1200, 184)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_inuqw")
+volume_db = -47.272
+autoplay = true
 
 [connection signal="body_entered" from="bounds/Area2D" to="." method="DestroyDrop"]
