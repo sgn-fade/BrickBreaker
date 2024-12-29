@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxxa86cnt2cp4"]
+
+[ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="1_llecg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dirfb"]
+atlas = ExtResource("1_llecg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58x13"]
+atlas = ExtResource("1_llecg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koywx"]
+atlas = ExtResource("1_llecg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpmmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58x13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koywx")
+}],
+"loop": true,
+"name": &"main",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdnrs"]
+radius = 9.04103
+height = 25.853
+
+[node name="Kirby" type="Node2D"]
+rotation = -1.48353
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hpmmi")
+animation = &"main"
+frame_progress = 0.165915
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9.96195, -0.871558)
+rotation = -3.12749
+shape = SubResource("CapsuleShape2D_sdnrs")
