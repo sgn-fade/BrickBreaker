@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=29 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="19_1uun6"]
 [ext_resource type="PackedScene" path="res://scenes/Alien.tscn" id="20_mqji2"]
 [ext_resource type="Texture2D" uid="uid://br5a5v5exg0fk" path="res://sprites/BlueMushroom.png" id="21_b30gy"]
+[ext_resource type="Texture2D" uid="uid://cuabsnqc5w5db" path="res://sprites/Ball.png" id="21_dfcpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqsri"]
 size = Vector2(411, 209)
@@ -236,7 +237,6 @@ volume_db = -30.0
 autoplay = true
 
 [node name="Control" type="Control" parent="." node_paths=PackedStringArray("_mainTextLabel", "_winImageTextureRect")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -3.0
@@ -257,6 +257,26 @@ offset_right = 1314.0
 offset_bottom = 870.0
 color = Color(0, 0, 0, 0.639216)
 metadata/_edit_lock_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/ColorRect"]
+position = Vector2(365, 419)
+emitting = false
+amount = 10
+lifetime = 0.65
+one_shot = true
+randomness = 0.12
+lifetime_randomness = 0.1
+texture = ExtResource("21_dfcpf")
+emission_shape = 1
+emission_sphere_radius = 75.98
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+angular_velocity_max = 290.91
+angle_min = 9.0
+angle_max = 180.0
 
 [node name="WinText" type="Label" parent="Control"]
 layout_mode = 0
