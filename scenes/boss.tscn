@@ -31,10 +31,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0kjm0"]
-height = 88.9525
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5u8i"]
+size = Vector2(20, 81.3313)
 
 [node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("Guns")]
+position = Vector2(895, 108)
 scale = Vector2(3, 3)
 motion_mode = 1
 script = ExtResource("1_aw1ri")
@@ -54,11 +55,12 @@ position = Vector2(-3.8147e-06, 17.3333)
 sprite_frames = SubResource("SpriteFrames_p7yno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -10)
+position = Vector2(-0.997894, -9.99391)
 rotation = 1.55856
-shape = SubResource("CapsuleShape2D_0kjm0")
+shape = SubResource("RectangleShape2D_k5u8i")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="Shoot"]

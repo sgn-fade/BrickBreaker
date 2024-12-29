@@ -15,6 +15,7 @@ public partial class Boss : CharacterBody2D, IBreakable
     {
         currentHP = HP;
         Velocity = Vector2.Right * Speed;
+        GD.Print(Velocity);
     }
 
     public void Shoot()
@@ -26,8 +27,7 @@ public partial class Boss : CharacterBody2D, IBreakable
         var collision = MoveAndCollide(Velocity * (float)delta * Speed);
         if (collision != null)
         {
-            Velocity = Velocity.Bounce(collision.GetNormal()).Normalized();
-            Velocity = Velocity with { Y = 0 };
+            Velocity = Velocity with { Y = 0, X = Velocity.Bounce(collision.GetNormal()).Normalized().X};
         }
     }
 
@@ -35,7 +35,11 @@ public partial class Boss : CharacterBody2D, IBreakable
     {
         currentHP--;
         if(currentHP == HP /2) RageMode();
-        if (currentHP <= 0) QueueFree();
+        if (currentHP <= 0)
+        {
+            Game.Instance.WinGame();
+            QueueFree();
+        }
     }
 
     private void RageMode()
@@ -46,6 +50,5 @@ public partial class Boss : CharacterBody2D, IBreakable
     }
     public void ApplyEffect(Ball ball)
     {
-        Game.Instance.DeleteBall(ball);
     }
 }

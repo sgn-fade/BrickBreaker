@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=34 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -6,30 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="2_jew0v"]
 [ext_resource type="PackedScene" uid="uid://dfdkgtiywxjar" path="res://PlayerBrick.tscn" id="3_or164"]
 [ext_resource type="PackedScene" uid="uid://cnhr4eubyd3m4" path="res://scenes/Message.tscn" id="4_4gr5d"]
-[ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
-[ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="5_nxusd"]
-[ext_resource type="Script" path="res://scenes/BuffSpawner.cs" id="6_7gmp3"]
+[ext_resource type="PackedScene" uid="uid://b0p40wtl1jeek" path="res://scenes/brick_lvl.tscn" id="5_6sas3"]
 [ext_resource type="Script" path="res://scripts/PlayerSpells.cs" id="6_bxq32"]
 [ext_resource type="Texture2D" uid="uid://rlkh2rq2j6i7" path="res://sprites/BallSpeedUpgrade.png" id="7_dqlx6"]
-[ext_resource type="PackedScene" path="res://scenes/PlayerSpell.tscn" id="7_h6fq7"]
+[ext_resource type="PackedScene" uid="uid://bg4437xnim81y" path="res://scenes/PlayerSpell.tscn" id="7_h6fq7"]
 [ext_resource type="AudioStream" uid="uid://s6fgei1ttg4c" path="res://sounds/BadApple.MP3" id="7_inuqw"]
-[ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="8_fhdhx"]
 [ext_resource type="Texture2D" uid="uid://dkqtu3r8gr8c3" path="res://sprites/SizeUpgrade.png" id="8_olx6x"]
 [ext_resource type="PackedScene" uid="uid://cxvn0vc2glmcx" path="res://scenes/KirbyArea.tscn" id="9_ydnbf"]
 [ext_resource type="Texture2D" uid="uid://bsokudm0n53ji" path="res://sprites/button.png" id="11_gwx56"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12_a6yop"]
-[ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="12_famvj"]
 [ext_resource type="Script" path="res://scenes/EndScreen.cs" id="17_iyf8x"]
 [ext_resource type="AudioStream" uid="uid://b3ynsddmwxhc2" path="res://sounds/WinSound.mp3" id="18_3sxg6"]
 [ext_resource type="AudioStream" uid="uid://dsijicbggheq" path="res://sounds/winSoundTrye.mp3" id="18_kqvwc"]
-[ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="19_1uun6"]
-[ext_resource type="PackedScene" path="res://scenes/Alien.tscn" id="20_mqji2"]
-[ext_resource type="Texture2D" uid="uid://br5a5v5exg0fk" path="res://sprites/BlueMushroom.png" id="21_b30gy"]
-[ext_resource type="Texture2D" uid="uid://cuabsnqc5w5db" path="res://sprites/Ball.png" id="21_dfcpf"]
-[ext_resource type="PackedScene" path="res://scenes/player_hp.tscn" id="25_blvq6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqsri"]
-size = Vector2(411, 209)
+[ext_resource type="PackedScene" uid="uid://ciaapqy0oygg7" path="res://scenes/Alien.tscn" id="20_mqji2"]
+[ext_resource type="Texture2D" uid="uid://cxv6g3cj3p0im" path="res://sprites/UpgradeBall.png" id="22_e2rrp"]
+[ext_resource type="Texture2D" uid="uid://cbysk3bgygc5s" path="res://sprites/happyEmoji.png" id="22_l5883"]
+[ext_resource type="Texture2D" uid="uid://wijpm6enhwbg" path="res://sprites/cryEmoji.png" id="23_pivm8"]
+[ext_resource type="PackedScene" uid="uid://ckx1errnqblj0" path="res://scenes/player_hp.tscn" id="25_blvq6"]
+[ext_resource type="PackedScene" uid="uid://dibred7trhcgw" path="res://scenes/boss.tscn" id="25_fq7d7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
 size = Vector2(663.5, 126)
@@ -40,6 +34,49 @@ size = Vector2(634, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de123"]
 size = Vector2(8.585, 998)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c23ji"]
+atlas = ExtResource("22_l5883")
+region = Rect2(0, 0, 60, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bije8"]
+atlas = ExtResource("22_l5883")
+region = Rect2(60, 0, 60, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x00we"]
+atlas = ExtResource("22_l5883")
+region = Rect2(120, 0, 60, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsqre"]
+atlas = ExtResource("22_l5883")
+region = Rect2(180, 0, 60, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1smgl"]
+atlas = ExtResource("22_l5883")
+region = Rect2(240, 0, 60, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epn1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c23ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bije8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x00we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsqre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1smgl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D" node_paths=PackedStringArray("_gameStatusScreen", "_playerHp")]
 position = Vector2(-7, 11)
 script = ExtResource("1_0f2a5")
@@ -48,6 +85,8 @@ _nyanCatBallScene = ExtResource("2_i0aoe")
 _alarmScene = ExtResource("4_4gr5d")
 _gameStatusScreen = NodePath("Control")
 _playerHp = NodePath("PlayerHP")
+_brickLvl = ExtResource("5_6sas3")
+_bossLvl = ExtResource("25_fq7d7")
 ChanceForNyanCat = 0.1
 
 [node name="Background" type="TextureRect" parent="."]
@@ -64,17 +103,6 @@ position = Vector2(961, 1029)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(970.5, 437.5)
-shape = SubResource("RectangleShape2D_mqsri")
-debug_color = Color(0.810048, 0.371412, 0.476472, 0.42)
-script = ExtResource("6_7gmp3")
-UpgradeList = Array[PackedScene]([ExtResource("8_fhdhx"), ExtResource("12_famvj")])
-
-[node name="Timer" type="Timer" parent="CollisionShape2D"]
-wait_time = 2.0
-autostart = true
-
 [node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("Player", "Spells")]
 layout_mode = 3
 anchors_preset = 0
@@ -85,7 +113,7 @@ offset_bottom = 478.0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("6_bxq32")
 Player = NodePath("../PlayerBrick")
-Spells = []
+Spells = [NodePath("HBoxContainer/TextureRect"), NodePath("HBoxContainer/TextureRect2"), NodePath("HBoxContainer/TextureRect3")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Upgrades"]
 modulate = Color(1, 1, 1, 0.768627)
@@ -139,101 +167,11 @@ shape = SubResource("RectangleShape2D_de123")
 position = Vector2(1265, 539)
 shape = SubResource("RectangleShape2D_de123")
 
-[node name="BrakeBrick" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(720, 56)
-
-[node name="BrakeBrick2" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(720, 88)
-
-[node name="BrakeBrick3" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(720, 120)
-
-[node name="BrakeBrick4" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(720, 152)
-
-[node name="BrakeBrick6" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(816, 56)
-
-[node name="BrakeBrick7" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(816, 88)
-
-[node name="BrakeBrick8" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(816, 120)
-
-[node name="BrakeBrick9" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(816, 152)
-
-[node name="BrakeBrick10" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(816, 184)
-
-[node name="BrakeBrick11" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(912, 56)
-
-[node name="BrakeBrick12" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(912, 88)
-
-[node name="BrakeBrick13" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(912, 120)
-
-[node name="BrakeBrick14" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(912, 152)
-
-[node name="BrakeBrick16" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1008, 56)
-
-[node name="BrakeBrick17" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1008, 88)
-
-[node name="BrakeBrick18" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1008, 120)
-
-[node name="BrakeBrick19" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1008, 152)
-
-[node name="BrakeBrick21" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1104, 56)
-
-[node name="BrakeBrick22" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1104, 88)
-
-[node name="BrakeBrick23" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1104, 120)
-
-[node name="BrakeBrick24" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1104, 152)
-
-[node name="BrakeBrick25" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1104, 184)
-
-[node name="BrakeBrick26" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1200, 56)
-
-[node name="BrakeBrick27" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1200, 88)
-
-[node name="BrakeBrick28" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1200, 120)
-
-[node name="BrakeBrick29" parent="." instance=ExtResource("4_ujgtj")]
-position = Vector2(1200, 152)
-
 [node name="PlayerBrick" parent="." instance=ExtResource("3_or164")]
 position = Vector2(961, 867)
 motion_mode = 1
 platform_on_leave = 2
 Speed = 500.0
-
-[node name="BrakeBrick31" parent="." instance=ExtResource("5_nxusd")]
-position = Vector2(720, 184)
-
-[node name="BrakeBrick32" parent="." instance=ExtResource("5_nxusd")]
-position = Vector2(912, 184)
-
-[node name="BrakeBrick33" parent="." instance=ExtResource("5_nxusd")]
-position = Vector2(1008, 184)
-
-[node name="BrakeBrick34" parent="." instance=ExtResource("5_nxusd")]
-position = Vector2(1200, 184)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_inuqw")
@@ -242,9 +180,17 @@ autoplay = true
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_kqvwc")
+volume_db = -14.182
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("_mainTextLabel", "_winImageTextureRect", "_particles", "_soundPlayer")]
+[node name="PlayerHP" parent="." instance=ExtResource("25_blvq6")]
+offset_left = 964.0
+offset_top = 918.0
+offset_right = 964.0
+offset_bottom = 918.0
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("_mainTextLabel", "_winSprite", "_loseSprite", "_soundPlayer")]
 visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = -3.0
@@ -253,10 +199,8 @@ offset_right = 37.0
 offset_bottom = 272.0
 script = ExtResource("17_iyf8x")
 _mainTextLabel = NodePath("WinText")
-_winImageTextureRect = NodePath("GameImage")
-_winImage = ExtResource("19_1uun6")
-_loseImage = ExtResource("21_b30gy")
-_particles = NodePath("GameImage/CPUParticles2D")
+_winSprite = NodePath("GameImage/AnimatedSprite2D")
+_loseSprite = NodePath("GameImage/Lose")
 _soundPlayer = NodePath("../WinSound")
 _winPlayer = ExtResource("18_kqvwc")
 _losePlayer = ExtResource("18_3sxg6")
@@ -272,32 +216,25 @@ metadata/_edit_lock_ = true
 
 [node name="GameImage" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 922.0
-offset_top = 127.0
-offset_right = 986.0
-offset_bottom = 191.0
-texture_normal = ExtResource("21_b30gy")
+offset_left = 926.0
+offset_top = 137.0
+offset_right = 1054.0
+offset_bottom = 266.0
+texture_normal = ExtResource("22_e2rrp")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/GameImage"]
-position = Vector2(29, 21)
-emitting = false
-amount = 10
-lifetime = 0.65
-one_shot = true
-explosiveness = 1.0
-randomness = 0.12
-lifetime_randomness = 0.1
-texture = ExtResource("21_dfcpf")
-emission_shape = 1
-emission_sphere_radius = 75.98
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 300.0
-initial_velocity_max = 300.0
-angular_velocity_max = 290.91
-angle_min = 9.0
-angle_max = 180.0
+[node name="Lose" type="Sprite2D" parent="Control/GameImage"]
+visible = false
+position = Vector2(36, 69)
+scale = Vector2(4, 4)
+texture = ExtResource("23_pivm8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/GameImage"]
+visible = false
+position = Vector2(39, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_epn1d")
+autoplay = "default"
+frame_progress = 0.104374
 
 [node name="WinText" type="Label" parent="Control"]
 layout_mode = 0
@@ -313,10 +250,10 @@ vertical_alignment = 1
 [node name="TextureButton" type="TextureButton" parent="Control"]
 self_modulate = Color(0.941176, 0.156863, 0.0901961, 1)
 layout_mode = 0
-offset_left = 885.0
-offset_top = 693.0
-offset_right = 1042.0
-offset_bottom = 736.015
+offset_left = 887.0
+offset_top = 331.0
+offset_right = 1044.0
+offset_bottom = 374.015
 texture_normal = ExtResource("11_gwx56")
 stretch_mode = 0
 
@@ -335,13 +272,6 @@ text = "RESTART"
 position = Vector2(1138, 721)
 metadata/_edit_lock_ = true
 
-[node name="PlayerHP" parent="." instance=ExtResource("25_blvq6")]
-offset_left = 964.0
-offset_top = 918.0
-offset_right = 964.0
-offset_bottom = 918.0
-
-[connection signal="timeout" from="CollisionShape2D/Timer" to="CollisionShape2D" method="SpawnBuff"]
 [connection signal="body_entered" from="bounds/Area2D" to="." method="DestroyDrop"]
 [connection signal="pressed" from="Control/GameImage" to="Control" method="OnImagePressed"]
 [connection signal="pressed" from="Control/TextureButton" to="." method="ReloadGame"]

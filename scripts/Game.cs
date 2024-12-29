@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BrickBraker.scenes;
 
 public partial class Game : Node
@@ -11,16 +12,34 @@ public partial class Game : Node
     [Export] private PackedScene _alarmScene;
     [Export] private EndScreen _gameStatusScreen;
     [Export] private PlayerHp _playerHp;
+    [Export] private PackedScene _brickLvl;
+    [Export] private PackedScene _bossLvl;
+    private Node2D lvl;
     public List<Ball> Balls { get; set; }
+    private bool bossActive;
 
     [Export(PropertyHint.Range, "0,1,0.01")]
     public double ChanceForNyanCat { get; set; }
 
     public override void _Ready()
     {
+        Engine.SetTimeScale(1);
+        lvl = _brickLvl.Instantiate<Node2D>();
+        AddChild(lvl);
         Balls = new List<Ball>();
         Instance = this;
         CreateBallAtSpawn();
+    }
+
+    public override void _Process(double delta)
+    {
+        if (lvl.GetChildCount() == 1)
+        {
+            lvl.QueueFree();
+            bossActive = true;
+            lvl = _bossLvl.Instantiate<Node2D>();
+            AddChild(lvl);
+        }
     }
 
     public void CreateBallAtSpawn()
@@ -70,17 +89,28 @@ public partial class Game : Node
 
     public void DeleteBall(Ball ball)
     {
-        Balls.Remove(ball);
         ball.QueueFree();
+        CallDeferred(nameof(DeferredBallDeleting), ball);
+
+    }
+
+    public void DeferredBallDeleting(Ball ball)
+    {
+        Balls.Remove(ball);
         if (Balls.Count == 1)
         {
             CreateAlarmScene();
         }
 
-        if (Balls.Count == 0)
+        if (Balls.Count == 0 || bossActive)
         {
             if (_playerHp.TryKillPlayer()) _gameStatusScreen.SetGameEndStatus(false);
             else CreateBallAtSpawn();
         }
+    }
+
+    public void WinGame()
+    {
+        _gameStatusScreen.SetGameEndStatus(true);
     }
 }

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0p40wtl1jeek"]
+
+[ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="1_e0w22"]
+[ext_resource type="Script" path="res://scenes/BuffSpawner.cs" id="3_ldhk4"]
+[ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="4_vpf3f"]
+[ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="5_7ry06"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug85p"]
+size = Vector2(411, 209)
+
+[node name="BrickLvl" type="Node2D"]
+
+[node name="BrakeBrick3" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(964, 740)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(970.5, 437.5)
+shape = SubResource("RectangleShape2D_ug85p")
+debug_color = Color(0.810048, 0.371412, 0.476472, 0.42)
+script = ExtResource("3_ldhk4")
+UpgradeList = Array[PackedScene]([ExtResource("4_vpf3f"), ExtResource("5_7ry06")])
+
+[node name="Timer" type="Timer" parent="CollisionShape2D"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="CollisionShape2D/Timer" to="CollisionShape2D" method="SpawnBuff"]
