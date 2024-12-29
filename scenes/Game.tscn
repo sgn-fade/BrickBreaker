@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=13 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
 [ext_resource type="PackedScene" uid="uid://l57oeu0ekoic" path="res://scenes/nyan_cat_ball.tscn" id="2_i0aoe"]
+[ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="2_jew0v"]
 [ext_resource type="PackedScene" uid="uid://dfdkgtiywxjar" path="res://PlayerBrick.tscn" id="3_or164"]
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
 [ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="5_nxusd"]
@@ -20,7 +21,9 @@ size = Vector2(8.585, 998)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0f2a5")
-_ballScene = ExtResource("2_i0aoe")
+_ballScene = ExtResource("2_jew0v")
+_nyanCatBallScene = ExtResource("2_i0aoe")
+ChanceForNyanCat = 0.05
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 651.0

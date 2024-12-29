@@ -7,6 +7,8 @@ public partial class Game : Node
 	public int BallsCount { set; get; }
 	public static Game Instance { get; set; }
 	[Export] private PackedScene _ballScene;
+	[Export] private PackedScene _nyanCatBallScene;
+	[Export(PropertyHint.Range, "0,1,0.01")]public double ChanceForNyanCat{ get; set; }
 	
 	public override void _Ready()
 	{
@@ -21,7 +23,8 @@ public partial class Game : Node
 	}
 	public void CreateBall(Vector2 spawnPosition, Vector2 velocity)
 	{
-		var ball = _ballScene.Instantiate<Ball>();
+		var ball = GD.Randf() < ChanceForNyanCat? _nyanCatBallScene.Instantiate<Ball>() : _ballScene.Instantiate<Ball>();
+
 		ball.Position = spawnPosition;
 		ball.Velocity = velocity;
 		CallDeferred(nameof(SpawnBall), ball);
