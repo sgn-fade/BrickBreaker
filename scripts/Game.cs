@@ -16,20 +16,29 @@ public partial class Game : Node
 		CreateBallAtSpawn();
 	}
 
+	public override void _Process(double delta)
+	{
+		GD.Print(BallsCount);
+	}
+
 	public void CreateBallAtSpawn()
 	{
 		var randomSpread = (float)GD.RandRange(-Mathf.Pi / 4 , Mathf.Pi / 4);
 		CreateBall(new Vector2(970, 850), new Vector2(0, -1).Rotated(randomSpread));
 	}
-	public void CreateBall(Vector2 spawnPosition, Vector2 velocity)
+	public void CreateBall(Vector2 spawnPosition, Vector2 velocity, Ball ball = null)
 	{
-		var ball = GD.Randf() < ChanceForNyanCat? _nyanCatBallScene.Instantiate<Ball>() : _ballScene.Instantiate<Ball>();
+		ball ??= GetDefaultBall();
 
 		ball.Position = spawnPosition;
 		ball.Velocity = velocity;
 		CallDeferred(nameof(SpawnBall), ball);
 	}
 
+	public Ball GetDefaultBall()
+	{
+		return GD.Randf() < ChanceForNyanCat? _nyanCatBallScene.Instantiate<Ball>() : _ballScene.Instantiate<Ball>();
+	}
 	public void SpawnBall(Ball ball)
 	{
 		AddChild(ball);
@@ -39,13 +48,18 @@ public partial class Game : Node
 	{
 		if (body is Ball ball)
 		{
-			BallsCount--;
-			ball.QueueFree();
+			DeleteBall(ball);
 
 			if (BallsCount == 0)
 			{
 				CreateBallAtSpawn();
 			}
 		}
+	}
+
+	public void DeleteBall(Ball ball)
+	{
+		ball.QueueFree();
+		BallsCount--;
 	}
 }

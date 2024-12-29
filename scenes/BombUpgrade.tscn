@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ow0b7l5h662"]
+
+[ext_resource type="PackedScene" uid="uid://2x5m3svswyey" path="res://scenes/Upgrade.tscn" id="1_cijcc"]
+[ext_resource type="Script" path="res://scripts/BombUpgrade.cs" id="2_1xjlx"]
+[ext_resource type="Texture2D" uid="uid://d3t7a1li6cutc" path="res://sprites/Bomb.png" id="2_nix4c"]
+[ext_resource type="PackedScene" uid="uid://b08qsat25tb0t" path="res://scenes/Bomb.tscn" id="3_4160s"]
+
+[node name="Upgrade" instance=ExtResource("1_cijcc")]
+script = ExtResource("2_1xjlx")
+_bomb = ExtResource("3_4160s")
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource("2_nix4c")
