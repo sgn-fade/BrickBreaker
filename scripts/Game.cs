@@ -47,14 +47,6 @@ public partial class Game : Node
 		if (body is Ball ball)
 		{
 			DeleteBall(ball);
-			if (Balls.Count == 1)
-			{
-				CreateAlarmScene();
-			}
-			if (Balls.Count == 0)
-			{
-				GetNode<Control>("Control").Visible = true;
-			}
 		}
 	}
 
@@ -71,5 +63,13 @@ public partial class Game : Node
 	{
 		Balls.Remove(ball);
 		ball.QueueFree();
+		if (Balls.Count == 1)
+		{
+			CreateAlarmScene();
+		}
+		if (Balls.Count == 0)
+		{
+			GetNode<Control>("Control").Visible = true;
+		}
 	}
 }

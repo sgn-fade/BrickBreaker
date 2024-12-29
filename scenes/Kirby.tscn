@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxxa86cnt2cp4"]
+[gd_scene load_steps=10 format=3 uid="uid://ca27tcrvgtn0i"]
 
 [ext_resource type="Script" path="res://scripts/Kirby.cs" id="1_644sj"]
 [ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="1_llecg"]

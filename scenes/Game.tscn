@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=24 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://s6fgei1ttg4c" path="res://sounds/BadApple.MP3" id="7_inuqw"]
 [ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="8_fhdhx"]
 [ext_resource type="Texture2D" uid="uid://dkqtu3r8gr8c3" path="res://sprites/SizeUpgrade.png" id="8_olx6x"]
+[ext_resource type="PackedScene" uid="uid://cxvn0vc2glmcx" path="res://scenes/KirbyArea.tscn" id="9_ydnbf"]
 [ext_resource type="Texture2D" uid="uid://bsokudm0n53ji" path="res://sprites/button.png" id="11_gwx56"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12_a6yop"]
 [ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="12_famvj"]
@@ -47,6 +48,11 @@ offset_bottom = 1659.0
 rotation = -1.5708
 texture = ExtResource("1_jr1yr")
 expand_mode = 1
+
+[node name="KirbyArea" parent="." instance=ExtResource("9_ydnbf")]
+position = Vector2(961, 1029)
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(970.5, 437.5)
@@ -225,6 +231,7 @@ volume_db = -30.0
 autoplay = true
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -3.0

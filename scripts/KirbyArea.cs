@@ -10,7 +10,6 @@ public partial class KirbyArea : Node2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		GD.Print("goodbye");
 		if (body is Ball ball)
 		{
 			var position = ball.GlobalPosition;
@@ -20,6 +19,7 @@ public partial class KirbyArea : Node2D
 			kirby.GlobalPosition = position;
 			kirby.Rotation = 0;
 			kirby.Scale = new Vector2(3, 3);
+			Game.Instance.DeleteBall(ball);
 		}
 	}
 
