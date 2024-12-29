@@ -8,17 +8,13 @@ public partial class Game : Node
 	public static Game Instance { get; set; }
 	[Export] private PackedScene _ballScene;
 	[Export] private PackedScene _nyanCatBallScene;
+	[Export] private PackedScene _alarmScene;
 	[Export(PropertyHint.Range, "0,1,0.01")]public double ChanceForNyanCat{ get; set; }
 	
 	public override void _Ready()
 	{
 		Instance = this;
 		CreateBallAtSpawn();
-	}
-
-	public override void _Process(double delta)
-	{
-		GD.Print(BallsCount);
 	}
 
 	public void CreateBallAtSpawn()
@@ -32,6 +28,8 @@ public partial class Game : Node
 
 		ball.Position = spawnPosition;
 		ball.Velocity = velocity;
+		GD.Print(ball.GlobalPosition);
+		GD.Print(ball.Velocity);
 		CallDeferred(nameof(SpawnBall), ball);
 	}
 
@@ -49,14 +47,27 @@ public partial class Game : Node
 		if (body is Ball ball)
 		{
 			DeleteBall(ball);
-
+			if (BallsCount == 1)
+			{
+				CreateAlarmScene();
+			}
 			if (BallsCount == 0)
 			{
-				CreateBallAtSpawn();
+				GetNode<Control>("Control").Visible = true;
 			}
 		}
 	}
 
+	public void ReloadGame()
+	{
+		GetTree().ReloadCurrentScene();
+	}
+	public void CreateAlarmScene()
+	{
+		var alarmObject = _alarmScene.Instantiate<Node2D>();
+		GD.Print(1111);
+		AddChild(alarmObject);
+	}
 	public void DeleteBall(Ball ball)
 	{
 		ball.QueueFree();

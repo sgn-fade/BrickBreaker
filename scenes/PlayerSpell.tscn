@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg4437xnim81y"]
+
+[ext_resource type="Texture2D" uid="uid://1gds0plb2rhs" path="res://sprites/SpeedUpgrade.png" id="1_bml64"]
+[ext_resource type="Script" path="res://scripts/PlayerSpell.cs" id="2_1clww"]
+[ext_resource type="Texture2D" uid="uid://beskhkxboaoee" path="res://sprites/square_label.png" id="2_67oes"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="3_b5jgu"]
+
+[node name="TextureRect" type="TextureProgressBar"]
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("1_bml64")
+script = ExtResource("2_1clww")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 8.33333
+offset_top = 27.3333
+offset_right = 48.3333
+offset_bottom = 67.3333
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_67oes")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 13.3333
+offset_top = 25.0
+offset_right = 53.3333
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_b5jgu")
+text = "Q"

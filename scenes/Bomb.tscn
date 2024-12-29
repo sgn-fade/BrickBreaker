@@ -4,20 +4,19 @@
 [ext_resource type="Script" path="res://scripts/BombBall.cs" id="2_6uluj"]
 [ext_resource type="Texture2D" uid="uid://d3t7a1li6cutc" path="res://sprites/Bomb.png" id="2_f3hsl"]
 
-[sub_resource type="Animation" id="Animation_n065m"]
-resource_name = "move"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_hsm6t"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("Sprite2D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ukbip"]
@@ -74,16 +73,29 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_h76ue"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_n065m"]
+resource_name = "move"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -91,7 +103,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c5dv4"]
 _data = {
-"RESET": SubResource("Animation_h76ue"),
+"RESET": SubResource("Animation_hsm6t"),
 "explode": SubResource("Animation_ukbip"),
 "move": SubResource("Animation_n065m")
 }
@@ -109,6 +121,7 @@ radius = 33.0151
 
 [node name="Ball" instance=ExtResource("1_hu3vf")]
 scale = Vector2(3, 3)
+collision_layer = 3
 script = ExtResource("2_6uluj")
 
 [node name="CPUParticles2D" parent="." index="0"]
@@ -118,6 +131,7 @@ emitting = false
 texture = ExtResource("2_f3hsl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_c5dv4")
 }

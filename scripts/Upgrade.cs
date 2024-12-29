@@ -13,5 +13,4 @@ public partial class Upgrade : StaticBody2D
         UpgradeBall(ball);
         QueueFree();
     }
-
 }

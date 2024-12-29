@@ -1,14 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=21 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
 [ext_resource type="PackedScene" uid="uid://l57oeu0ekoic" path="res://scenes/nyan_cat_ball.tscn" id="2_i0aoe"]
 [ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="2_jew0v"]
 [ext_resource type="PackedScene" uid="uid://dfdkgtiywxjar" path="res://PlayerBrick.tscn" id="3_or164"]
+[ext_resource type="PackedScene" uid="uid://cnhr4eubyd3m4" path="res://scenes/Message.tscn" id="4_4gr5d"]
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
 [ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="5_nxusd"]
+[ext_resource type="Script" path="res://scripts/PlayerSpells.cs" id="6_bxq32"]
+[ext_resource type="Texture2D" uid="uid://rlkh2rq2j6i7" path="res://sprites/BallSpeedUpgrade.png" id="7_dqlx6"]
+[ext_resource type="PackedScene" uid="uid://bg4437xnim81y" path="res://scenes/PlayerSpell.tscn" id="7_h6fq7"]
 [ext_resource type="AudioStream" uid="uid://s6fgei1ttg4c" path="res://sounds/BadApple.MP3" id="7_inuqw"]
 [ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="8_fhdhx"]
+[ext_resource type="Texture2D" uid="uid://dkqtu3r8gr8c3" path="res://sprites/SizeUpgrade.png" id="8_olx6x"]
+[ext_resource type="Texture2D" uid="uid://bsokudm0n53ji" path="res://sprites/button.png" id="11_gwx56"]
+[ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12_a6yop"]
+[ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="12_famvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
 size = Vector2(663.5, 126)
@@ -20,10 +28,12 @@ size = Vector2(634, 8)
 size = Vector2(8.585, 998)
 
 [node name="Game" type="Node2D"]
+position = Vector2(-7, 11)
 script = ExtResource("1_0f2a5")
 _ballScene = ExtResource("2_jew0v")
 _nyanCatBallScene = ExtResource("2_i0aoe")
-ChanceForNyanCat = 0.05
+_alarmScene = ExtResource("4_4gr5d")
+ChanceForNyanCat = 1.0
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 651.0
@@ -33,6 +43,44 @@ offset_bottom = 1659.0
 rotation = -1.5708
 texture = ExtResource("1_jr1yr")
 expand_mode = 1
+
+[node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("Player", "Spells")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 242.0
+offset_top = 329.0
+offset_right = 282.0
+offset_bottom = 369.0
+scale = Vector2(3, 3)
+script = ExtResource("6_bxq32")
+Player = NodePath("../PlayerBrick")
+Spells = [NodePath("HBoxContainer/TextureRect"), NodePath("HBoxContainer/TextureRect2"), NodePath("HBoxContainer/TextureRect3")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Upgrades"]
+modulate = Color(1, 1, 1, 0.768627)
+layout_mode = 0
+offset_left = 183.333
+offset_top = 113.0
+offset_right = 299.333
+offset_bottom = 229.0
+theme_override_constants/separation = 10
+
+[node name="TextureRect" parent="Upgrades/HBoxContainer" instance=ExtResource("7_h6fq7")]
+layout_mode = 2
+CooldownTime = 20.0
+Button = "Q"
+
+[node name="TextureRect2" parent="Upgrades/HBoxContainer" instance=ExtResource("7_h6fq7")]
+layout_mode = 2
+texture_progress = ExtResource("8_olx6x")
+CooldownTime = 30.0
+Button = "W"
+
+[node name="TextureRect3" parent="Upgrades/HBoxContainer" instance=ExtResource("7_h6fq7")]
+layout_mode = 2
+texture_progress = ExtResource("7_dqlx6")
+CooldownTime = 10.0
+Button = "E"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 538)
@@ -161,7 +209,43 @@ position = Vector2(983, 647)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_inuqw")
-volume_db = -47.272
+volume_db = -30.0
 autoplay = true
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_top = 232.0
+offset_right = 37.0
+offset_bottom = 272.0
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+self_modulate = Color(0.941176, 0.156863, 0.0901961, 1)
+layout_mode = 0
+offset_left = 885.0
+offset_top = 693.0
+offset_right = 1042.0
+offset_bottom = 736.015
+texture_normal = ExtResource("11_gwx56")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/TextureButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 310.0
+offset_bottom = 87.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("12_a6yop")
+theme_override_font_sizes/font_size = 100
+text = "RESTART"
+
+[node name="Upgrade" parent="." instance=ExtResource("12_famvj")]
+position = Vector2(852, 594)
+
+[node name="Upgrade2" parent="." instance=ExtResource("12_famvj")]
+position = Vector2(1130, 463)
+
 [connection signal="body_entered" from="bounds/Area2D" to="." method="DestroyDrop"]
+[connection signal="pressed" from="Control/TextureButton" to="." method="ReloadGame"]
