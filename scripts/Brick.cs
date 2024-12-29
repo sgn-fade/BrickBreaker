@@ -15,8 +15,6 @@ public partial class Brick : StaticBody2D, IBreakable
     };
 
     [Export] private int _hitCount = 1;
-    [Export] private Sprite2D _sprite;
-    [Export] private CollisionShape2D _collisionShape;
     [Export] private AnimationPlayer _animationPlayer;
 
     public override void _Ready()

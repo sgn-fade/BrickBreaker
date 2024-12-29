@@ -6,12 +6,9 @@ namespace BrickBraker.scenes;
 public partial class Ball : CharacterBody2D
 {
     [Export] public float Speed { get; set; } = 300f;
+    public Vector2 ReflectedNormal { get; set; }
 
 
-    public override void _Ready()
-    {
-        Velocity = new Vector2(1, -1).Rotated(Rotation).Normalized();
-    }
 
 
     public override void _PhysicsProcess(double delta)
@@ -19,11 +16,12 @@ public partial class Ball : CharacterBody2D
         var collision = MoveAndCollide(Velocity * (float)delta * Speed);
         if (collision != null)
         {
-            Velocity = Velocity.Bounce(collision.GetNormal()).Normalized();
+            ReflectedNormal = collision.GetNormal();
+            Velocity = Velocity.Bounce(ReflectedNormal).Normalized();
             if (collision.GetCollider() is IBreakable brick)
             {
-                brick.ApplyEffect(this);
                 brick.Hit();
+                brick.ApplyEffect(this);
             }
         }
     }
