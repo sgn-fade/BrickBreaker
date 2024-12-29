@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://3naearwku4gl"]
+
+[ext_resource type="Texture2D" uid="uid://c05u1asv4k83a" path="res://sprites/PlayerPlateAlien.png" id="1_0cf3p"]
+
+[sub_resource type="Animation" id="Animation_hv4sc"]
+resource_name = "main"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -7), Vector2(0, 0), Vector2(0, 7), Vector2(0, 0), Vector2(0, 0), Vector2(0, -7), Vector2(0, 0), Vector2(7, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, -7), Vector2(0, 0), Vector2(7, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 230.0, 350.0, 450.0, 550.0, 550.0, 650.0, 750.0, 850.0, 950.0, 950.0, 1050.0, 1150.0, 1250.0]
+}
+
+[sub_resource type="Animation" id="Animation_xio2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_marae"]
+_data = {
+"RESET": SubResource("Animation_xio2n"),
+"main": SubResource("Animation_hv4sc")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_l8dw6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -326, -97, 0, 0, 0, 0, 39.6667, -99.3333, 0, 0, 0, 0, 164.333, -59.3333, 0, 0, 0, 0, 165, -58.6667, 0, 0, 0, 0, 159.667, -16, 0, 0, 0, 0, 89, 2.66667, 0, 0, 0, 0, -27.6667, -2.66666, 0, 0, 0, 0, -162.333, -4.66666, 0, 0, 0, 0, -177.667, 51, 0, 0, 0, 0, -160.333, 73.3333, 0, 0, 0, 0, -5, 85, 0, 0, 0, 0, 141.667, 89)
+}
+point_count = 12
+
+[node name="Alien" type="Node2D"]
+position = Vector2(303, 420)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_marae")
+}
+autoplay = "main"
+
+[node name="Path2D" type="Path2D" parent="."]
+process_mode = 3
+curve = SubResource("Curve2D_l8dw6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+process_mode = 3
+position = Vector2(-326, -97)
+rotation = 0.0191614
+rotates = false
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = -0.0191614
+texture = ExtResource("1_0cf3p")
