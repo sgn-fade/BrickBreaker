@@ -20,5 +20,6 @@ public partial class PlayerHp : Control
 	public void UpdateView()
 	{
 		_sprite.Frame++;
+		GetNode<AnimationPlayer>("p").Play("hit");
 	}
 }
