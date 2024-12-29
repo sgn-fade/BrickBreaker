@@ -1,8 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dibred7trhcgw"]
+[gd_scene load_steps=8 format=3 uid="uid://dibred7trhcgw"]
 
 [ext_resource type="Script" path="res://scripts/Boss.cs" id="1_aw1ri"]
 [ext_resource type="PackedScene" uid="uid://bymxdnmkqluf6" path="res://scenes/boss_gun.tscn" id="2_1eiqe"]
-[ext_resource type="Texture2D" uid="uid://nf5xxx21bw8a" path="res://sprites/BrickBoss.png" id="2_jvda7"]
+[ext_resource type="Texture2D" uid="uid://d1bis3csmqr0m" path="res://sprites/BossSpriteSheet.png" id="3_b55ef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s0qp"]
+atlas = ExtResource("3_b55ef")
+region = Rect2(90, 0, 90, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08qor"]
+atlas = ExtResource("3_b55ef")
+region = Rect2(0, 0, 90, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7yno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s0qp")
+}],
+"loop": true,
+"name": &"Rage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08qor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0kjm0"]
 height = 88.9525
@@ -23,8 +50,8 @@ position = Vector2(-33.3333, 17)
 [node name="BossGun3" parent="." instance=ExtResource("2_1eiqe")]
 position = Vector2(-3.8147e-06, 17.3333)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jvda7")
+[node name="s" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p7yno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -10)
