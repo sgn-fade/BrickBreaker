@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxrnlnegrkgdx"]
+
+[ext_resource type="PackedScene" uid="uid://2x5m3svswyey" path="res://scenes/Upgrade.tscn" id="1_cw35j"]
+[ext_resource type="Script" path="res://scripts/SizeUp.cs" id="2_hfn3m"]
+[ext_resource type="Texture2D" uid="uid://duxjft1j4ivuv" path="res://sprites/SizeUp.png" id="2_l15u3"]
+
+[node name="SizeUp" instance=ExtResource("1_cw35j")]
+script = ExtResource("2_hfn3m")
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource("2_l15u3")

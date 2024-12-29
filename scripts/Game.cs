@@ -4,16 +4,21 @@ using BrickBraker.scenes;
 
 public partial class Game : Node
 {
-	private int BallsCount { set; get; }
+	public int BallsCount { set; get; }
 	public static Game Instance { get; set; }
 	[Export] private PackedScene _ballScene;
 	
 	public override void _Ready()
 	{
 		Instance = this;
-		CreateBall(new Vector2(970, 850), new Vector2(0, -1));
+		CreateBallAtSpawn();
 	}
 
+	public void CreateBallAtSpawn()
+	{
+		var randomSpread = (float)GD.RandRange(-Mathf.Pi / 4 , Mathf.Pi / 4);
+		CreateBall(new Vector2(970, 850), new Vector2(0, -1).Rotated(randomSpread));
+	}
 	public void CreateBall(Vector2 spawnPosition, Vector2 velocity)
 	{
 		var ball = _ballScene.Instantiate<Ball>();
@@ -36,8 +41,7 @@ public partial class Game : Node
 
 			if (BallsCount == 0)
 			{
-				float randomSpread = (float)GD.RandRange(-Mathf.Pi / 4 , Mathf.Pi / 4);
-				CreateBall(new Vector2(970, 850), new Vector2(0, -1).Rotated(randomSpread));
+				CreateBallAtSpawn();
 			}
 		}
 	}
