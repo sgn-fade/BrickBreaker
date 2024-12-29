@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxxa86cnt2cp4"]
+
+[ext_resource type="Script" path="res://scripts/Kirby.cs" id="1_644sj"]
+[ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="1_llecg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dirfb"]
+atlas = ExtResource("1_llecg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58x13"]
+atlas = ExtResource("1_llecg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koywx"]
+atlas = ExtResource("1_llecg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpmmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58x13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koywx")
+}],
+"loop": false,
+"name": &"main",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_n60bk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r67k3"]
+resource_name = "main"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.316667, 0.4, 0.483333, 0.566667, 0.65, 0.733333, 0.816667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.757858, 1.8025, 1),
+"update": 0,
+"values": [Vector2(0, 18), Vector2(0, -10), Vector2(0, 18)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubn4l"]
+_data = {
+"RESET": SubResource("Animation_n60bk"),
+"main": SubResource("Animation_r67k3")
+}
+
+[node name="Kirby" type="Node2D"]
+rotation = -1.48353
+script = ExtResource("1_644sj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hpmmi")
+animation = &"main"
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ubn4l")
+}
+autoplay = "main"
