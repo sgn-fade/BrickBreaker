@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BrickBraker;
+using BrickBraker.scenes;
 
 public partial class PlayerSpells : Control
 {
@@ -47,5 +48,20 @@ public partial class PlayerSpells : Control
 
     public void SpeedUpBalls()
     {
+        var ballsWhichSpeedUp = new List<Ball>();
+
+        foreach (var ball in Game.Instance.Balls)
+        {
+            ball.Speed +=200;
+            ballsWhichSpeedUp.Add(ball);
+        }
+        GetTree().CreateTimer(5).Timeout += () =>
+        {
+            foreach (var ball in ballsWhichSpeedUp)
+            {
+                ball.Speed -=200 ;
+            }
+        };
+        ballsWhichSpeedUp.Clear();
     }
 }

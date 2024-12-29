@@ -1,18 +1,20 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using BrickBraker.scenes;
 
 public partial class Game : Node
 {
-	public int BallsCount { set; get; }
 	public static Game Instance { get; set; }
 	[Export] private PackedScene _ballScene;
 	[Export] private PackedScene _nyanCatBallScene;
 	[Export] private PackedScene _alarmScene;
+	public List<Ball> Balls { get; set; }
 	[Export(PropertyHint.Range, "0,1,0.01")]public double ChanceForNyanCat{ get; set; }
 	
 	public override void _Ready()
 	{
+		Balls = new List<Ball>();
 		Instance = this;
 		CreateBallAtSpawn();
 	}
@@ -28,8 +30,6 @@ public partial class Game : Node
 
 		ball.Position = spawnPosition;
 		ball.Velocity = velocity;
-		GD.Print(ball.GlobalPosition);
-		GD.Print(ball.Velocity);
 		CallDeferred(nameof(SpawnBall), ball);
 	}
 
@@ -40,18 +40,18 @@ public partial class Game : Node
 	public void SpawnBall(Ball ball)
 	{
 		AddChild(ball);
-		BallsCount++;
+		Balls.Add(ball);
 	}
 	public void DestroyDrop(Node2D body)
 	{
 		if (body is Ball ball)
 		{
 			DeleteBall(ball);
-			if (BallsCount == 1)
+			if (Balls.Count == 1)
 			{
 				CreateAlarmScene();
 			}
-			if (BallsCount == 0)
+			if (Balls.Count == 0)
 			{
 				GetNode<Control>("Control").Visible = true;
 			}
@@ -65,12 +65,11 @@ public partial class Game : Node
 	public void CreateAlarmScene()
 	{
 		var alarmObject = _alarmScene.Instantiate<Node2D>();
-		GD.Print(1111);
 		AddChild(alarmObject);
 	}
 	public void DeleteBall(Ball ball)
 	{
+		Balls.Remove(ball);
 		ball.QueueFree();
-		BallsCount--;
 	}
 }
