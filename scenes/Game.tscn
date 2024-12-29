@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=32 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/BuffSpawner.cs" id="6_7gmp3"]
 [ext_resource type="Script" path="res://scripts/PlayerSpells.cs" id="6_bxq32"]
 [ext_resource type="Texture2D" uid="uid://rlkh2rq2j6i7" path="res://sprites/BallSpeedUpgrade.png" id="7_dqlx6"]
-[ext_resource type="PackedScene" uid="uid://bg4437xnim81y" path="res://scenes/PlayerSpell.tscn" id="7_h6fq7"]
+[ext_resource type="PackedScene" path="res://scenes/PlayerSpell.tscn" id="7_h6fq7"]
 [ext_resource type="AudioStream" uid="uid://s6fgei1ttg4c" path="res://sounds/BadApple.MP3" id="7_inuqw"]
 [ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="8_fhdhx"]
 [ext_resource type="Texture2D" uid="uid://dkqtu3r8gr8c3" path="res://sprites/SizeUpgrade.png" id="8_olx6x"]
@@ -20,11 +20,13 @@
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12_a6yop"]
 [ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="12_famvj"]
 [ext_resource type="Script" path="res://scenes/EndScreen.cs" id="17_iyf8x"]
+[ext_resource type="AudioStream" uid="uid://b3ynsddmwxhc2" path="res://sounds/WinSound.mp3" id="18_3sxg6"]
+[ext_resource type="AudioStream" uid="uid://dsijicbggheq" path="res://sounds/winSoundTrye.mp3" id="18_kqvwc"]
 [ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="19_1uun6"]
-[ext_resource type="PackedScene" uid="uid://ciaapqy0oygg7" path="res://scenes/Alien.tscn" id="20_mqji2"]
+[ext_resource type="PackedScene" path="res://scenes/Alien.tscn" id="20_mqji2"]
 [ext_resource type="Texture2D" uid="uid://br5a5v5exg0fk" path="res://sprites/BlueMushroom.png" id="21_b30gy"]
 [ext_resource type="Texture2D" uid="uid://cuabsnqc5w5db" path="res://sprites/Ball.png" id="21_dfcpf"]
-[ext_resource type="PackedScene" uid="uid://ckx1errnqblj0" path="res://scenes/player_hp.tscn" id="25_blvq6"]
+[ext_resource type="PackedScene" path="res://scenes/player_hp.tscn" id="25_blvq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqsri"]
 size = Vector2(411, 209)
@@ -238,7 +240,10 @@ stream = ExtResource("7_inuqw")
 volume_db = -30.0
 autoplay = true
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("_mainTextLabel", "_winImageTextureRect")]
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_kqvwc")
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("_mainTextLabel", "_winImageTextureRect", "_particles", "_soundPlayer")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -251,6 +256,10 @@ _mainTextLabel = NodePath("WinText")
 _winImageTextureRect = NodePath("GameImage")
 _winImage = ExtResource("19_1uun6")
 _loseImage = ExtResource("21_b30gy")
+_particles = NodePath("GameImage/CPUParticles2D")
+_soundPlayer = NodePath("../WinSound")
+_winPlayer = ExtResource("18_kqvwc")
+_losePlayer = ExtResource("18_3sxg6")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0
@@ -261,12 +270,21 @@ offset_bottom = 870.0
 color = Color(0, 0, 0, 0.639216)
 metadata/_edit_lock_ = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/ColorRect"]
-position = Vector2(365, 419)
+[node name="GameImage" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 127.0
+offset_right = 986.0
+offset_bottom = 191.0
+texture_normal = ExtResource("21_b30gy")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/GameImage"]
+position = Vector2(29, 21)
 emitting = false
 amount = 10
 lifetime = 0.65
 one_shot = true
+explosiveness = 1.0
 randomness = 0.12
 lifetime_randomness = 0.1
 texture = ExtResource("21_dfcpf")
@@ -313,14 +331,9 @@ theme_override_fonts/font = ExtResource("12_a6yop")
 theme_override_font_sizes/font_size = 100
 text = "RESTART"
 
-[node name="GameImage" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 795.0
-offset_right = 1159.0
-offset_bottom = 364.0
-
 [node name="Alien" parent="." instance=ExtResource("20_mqji2")]
-position = Vector2(1145, 725)
+position = Vector2(1138, 721)
+metadata/_edit_lock_ = true
 
 [node name="PlayerHP" parent="." instance=ExtResource("25_blvq6")]
 offset_left = 964.0
@@ -330,4 +343,5 @@ offset_bottom = 918.0
 
 [connection signal="timeout" from="CollisionShape2D/Timer" to="CollisionShape2D" method="SpawnBuff"]
 [connection signal="body_entered" from="bounds/Area2D" to="." method="DestroyDrop"]
+[connection signal="pressed" from="Control/GameImage" to="Control" method="OnImagePressed"]
 [connection signal="pressed" from="Control/TextureButton" to="." method="ReloadGame"]
