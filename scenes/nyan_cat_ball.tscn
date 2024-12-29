@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://l57oeu0ekoic"]
+
+[ext_resource type="PackedScene" uid="uid://dil7lg35gvs5w" path="res://scenes/Ball.tscn" id="1_nqffj"]
+[ext_resource type="Texture2D" uid="uid://ckfyejrhjuyim" path="res://sprites/RainbowParticle.png" id="2_r5c0v"]
+[ext_resource type="Texture2D" uid="uid://d3m5qh4jqqu1j" path="res://sprites/NyanCatBall.png" id="3_yq8hf"]
+
+[sub_resource type="Gradient" id="Gradient_k1q06"]
+offsets = PackedFloat32Array(0.0165289, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="NyanCatBall" instance=ExtResource("1_nqffj")]
+scale = Vector2(3, 3)
+
+[node name="CPUParticles2D" parent="." index="0"]
+rotation = 3.14159
+scale = Vector2(1, -1)
+amount = 30
+lifetime = 1.0
+local_coords = true
+texture = ExtResource("2_r5c0v")
+emission_sphere_radius = 1.0
+spread = 0.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_amount_min = 1.0
+scale_amount_max = 1.0
+scale_amount_curve = null
+color_ramp = SubResource("Gradient_k1q06")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_yq8hf")

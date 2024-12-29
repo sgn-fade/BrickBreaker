@@ -9,7 +9,10 @@ public partial class Ball : CharacterBody2D
     public Vector2 ReflectedNormal { get; set; }
 
 
-
+    public override void _Process(double delta)
+    {
+        LookAt(GlobalPosition + Velocity.Normalized());
+    }
 
     public override void _PhysicsProcess(double delta)
     {
