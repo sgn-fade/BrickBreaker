@@ -10,12 +10,17 @@ public partial class KirbyArea : Node2D
 
 	private void OnBodyEntered(Node2D body)
 	{
+		GD.Print("goodbye");
 		if (body is Ball ball)
 		{
 			var position = ball.GlobalPosition;
-			var kirby = _kirby.Instantiate<Node2D>();
-			kirby.GlobalPosition = position;
+			
+			var kirby = _kirby.Instantiate<Kirby>();
 			AddChild(kirby);
+			kirby.GlobalPosition = position;
+			kirby.Rotation = 0;
+			kirby.Scale = new Vector2(3, 3);
 		}
 	}
+
 }
