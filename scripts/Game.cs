@@ -9,6 +9,7 @@ public partial class Game : Node
 	[Export] private PackedScene _ballScene;
 	[Export] private PackedScene _nyanCatBallScene;
 	[Export] private PackedScene _alarmScene;
+	[Export] private EndScreen _gameStatusScreen;
 	public List<Ball> Balls { get; set; }
 	[Export(PropertyHint.Range, "0,1,0.01")]public double ChanceForNyanCat{ get; set; }
 	
@@ -69,7 +70,7 @@ public partial class Game : Node
 		}
 		if (Balls.Count == 0)
 		{
-			GetNode<Control>("Control").Visible = true;
+			_gameStatusScreen.SetGameEndStatus(false);
 		}
 	}
 }
