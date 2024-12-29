@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bymxdnmkqluf6"]
+
+[ext_resource type="Script" path="res://scripts/BossGun.cs" id="1_ccr85"]
+
+[sub_resource type="Curve" id="Curve_y0l16"]
+_data = [Vector2(0.00284091, 0.932203), 0.0, 0.0, 0, 0, Vector2(1, 0.0141239), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_r6xba"]
+offsets = PackedFloat32Array(0, 0.355372, 0.669421, 0.991736)
+colors = PackedColorArray(1, 1, 1, 1, 0.999677, 0.976563, 0.924648, 0.866503, 0.2, 0.145098, 0, 1, 0, 0, 0, 0.619608)
+
+[node name="BossGun" type="Node2D"]
+script = ExtResource("1_ccr85")
+
+[node name="s" type="CPUParticles2D" parent="."]
+scale = Vector2(0.3, 0.3)
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+orbit_velocity_min = -2.0
+orbit_velocity_max = 2.0
+tangential_accel_min = -10.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_y0l16")
+color_ramp = SubResource("Gradient_r6xba")

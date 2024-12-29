@@ -19,6 +19,6 @@ public partial class PlayerHp : Control
 
 	public void UpdateView()
 	{
-		_sprite.Frame++;		
+		_sprite.Frame++;
 	}
 }

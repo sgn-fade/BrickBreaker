@@ -27,5 +27,5 @@ scale_amount_max = 1.0
 scale_amount_curve = null
 color_ramp = SubResource("Gradient_k1q06")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("3_yq8hf")

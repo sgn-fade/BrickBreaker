@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dibred7trhcgw"]
+
+[ext_resource type="Script" path="res://scripts/Boss.cs" id="1_aw1ri"]
+[ext_resource type="PackedScene" uid="uid://bymxdnmkqluf6" path="res://scenes/boss_gun.tscn" id="2_1eiqe"]
+[ext_resource type="Texture2D" uid="uid://nf5xxx21bw8a" path="res://sprites/BrickBoss.png" id="2_jvda7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0kjm0"]
+height = 88.9525
+
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("Guns")]
+scale = Vector2(3, 3)
+motion_mode = 1
+script = ExtResource("1_aw1ri")
+Speed = 100
+Guns = [NodePath("BossGun"), NodePath("BossGun2"), NodePath("BossGun3")]
+
+[node name="BossGun" parent="." instance=ExtResource("2_1eiqe")]
+position = Vector2(33.3333, 16.3333)
+
+[node name="BossGun2" parent="." instance=ExtResource("2_1eiqe")]
+position = Vector2(-33.3333, 17)
+
+[node name="BossGun3" parent="." instance=ExtResource("2_1eiqe")]
+position = Vector2(-3.8147e-06, 17.3333)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jvda7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -10)
+rotation = 1.55856
+shape = SubResource("CapsuleShape2D_0kjm0")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="Shoot"]
