@@ -39,7 +39,7 @@ script = ExtResource("1_0f2a5")
 _ballScene = ExtResource("2_jew0v")
 _nyanCatBallScene = ExtResource("2_i0aoe")
 _alarmScene = ExtResource("4_4gr5d")
-ChanceForNyanCat = 1.0
+ChanceForNyanCat = 0.1
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 651.0
@@ -63,17 +63,17 @@ script = ExtResource("6_7gmp3")
 UpgradeList = Array[PackedScene]([ExtResource("8_fhdhx"), ExtResource("12_famvj")])
 
 [node name="Timer" type="Timer" parent="CollisionShape2D"]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 
 [node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("Player", "Spells")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 242.0
-offset_top = 329.0
-offset_right = 282.0
-offset_bottom = 369.0
-scale = Vector2(3, 3)
+offset_left = 356.0
+offset_top = 438.0
+offset_right = 396.0
+offset_bottom = 478.0
+scale = Vector2(2.5, 2.5)
 script = ExtResource("6_bxq32")
 Player = NodePath("../PlayerBrick")
 Spells = [NodePath("HBoxContainer/TextureRect"), NodePath("HBoxContainer/TextureRect2"), NodePath("HBoxContainer/TextureRect3")]

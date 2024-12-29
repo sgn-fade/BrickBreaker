@@ -10,4 +10,15 @@ public partial class PlayerBrick : CharacterBody2D
         Velocity = Velocity with { X = Input.GetAxis("move_left", "move_right") * Speed};
         MoveAndSlide();
     }
+
+    public void SwitchWindParticles(bool state)
+    {
+        GetNode<CpuParticles2D>("WIND").Emitting = state;
+    }
+
+    public void GroundParticles()
+    {
+        GetNode<CpuParticles2D>("GROUND").Emitting = true;
+
+    }
 }

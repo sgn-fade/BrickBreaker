@@ -74,7 +74,7 @@ point_count = 12
 position = Vector2(303, 420)
 scale = Vector2(3, 3)
 script = ExtResource("1_3402y")
-ChanceForAlien = 1.0
+ChanceForAlien = 0.3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -99,4 +99,5 @@ rotation = -0.0191614
 texture = ExtResource("1_0cf3p")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true

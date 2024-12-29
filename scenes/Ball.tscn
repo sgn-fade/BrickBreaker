@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dil7lg35gvs5w"]
+[gd_scene load_steps=6 format=3 uid="uid://dil7lg35gvs5w"]
 
 [ext_resource type="Script" path="res://scripts/Ball.cs" id="1_5xffh"]
 [ext_resource type="Texture2D" uid="uid://cuabsnqc5w5db" path="res://sprites/Ball.png" id="2_ny8dt"]
@@ -7,11 +7,15 @@
 _data = [Vector2(0, 0.946327), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Gradient" id="Gradient_fbfvg"]
+colors = PackedColorArray(0.823529, 0.854902, 0, 1, 0.678713, 0, 0.0582149, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_70fvs"]
 
-[node name="Ball" type="CharacterBody2D"]
+[node name="Ball" type="CharacterBody2D" node_paths=PackedStringArray("fireParticles")]
 collision_layer = 2
 script = ExtResource("1_5xffh")
+fireParticles = NodePath("CPUParticles2D2")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 40
@@ -22,6 +26,20 @@ gravity = Vector2(0, 0)
 scale_amount_min = 5.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_6vg5k")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(0, 1)
+emitting = false
+amount = 40
+lifetime = 0.4
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_6vg5k")
+color = Color(1, 0.756863, 0, 1)
+color_ramp = SubResource("Gradient_fbfvg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3125, 0.3125)

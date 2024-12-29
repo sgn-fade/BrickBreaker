@@ -36,12 +36,18 @@ public partial class PlayerSpells : Control
 
     public void SpeedPlayerUp()
     {
+        Player.SwitchWindParticles(true);
         Player.Speed += 200;
-        GetTree().CreateTimer(5).Timeout += () => Player.Speed -= 200;
+        GetTree().CreateTimer(5).Timeout += () =>
+        {
+            Player.Speed -= 200;
+            Player.SwitchWindParticles(false);
+        };
     }
 
     public void ExpandPlayer()
     {
+        Player.GroundParticles();
         Player.Scale = Player.Scale with { X = Player.Scale.X * 2 };
         GetTree().CreateTimer(5).Timeout += () => Player.Scale = Player.Scale with { X = Player.Scale.X / 2 };
     }
@@ -53,12 +59,14 @@ public partial class PlayerSpells : Control
         foreach (var ball in Game.Instance.Balls)
         {
             ball.Speed +=200;
+            ball.FireUp();
             ballsWhichSpeedUp.Add(ball);
         }
         GetTree().CreateTimer(5).Timeout += () =>
         {
             foreach (var ball in ballsWhichSpeedUp)
             {
+                ball.FireDown();
                 ball.Speed -=200 ;
             }
         };

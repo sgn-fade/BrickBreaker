@@ -7,6 +7,7 @@ public partial class Ball : CharacterBody2D
 {
     [Export] public float Speed { get; set; } = 300f;
     public Vector2 ReflectedNormal { get; set; }
+    [Export] public CpuParticles2D fireParticles;
 
 
     public override void _Process(double delta)
@@ -31,5 +32,16 @@ public partial class Ball : CharacterBody2D
     {
         brick.Hit();
         brick.ApplyEffect(this);
+    }
+
+    public void FireUp()
+    {
+        if(fireParticles != null)
+            fireParticles.Emitting = true;
+    }
+    public void FireDown()
+    {
+        if(fireParticles != null)
+            fireParticles.Emitting = false;
     }
 }
