@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxrnlnegrkgdx"]
+[gd_scene load_steps=5 format=3 uid="uid://dxrnlnegrkgdx"]
 
 [ext_resource type="PackedScene" uid="uid://2x5m3svswyey" path="res://scenes/Upgrade.tscn" id="1_cw35j"]
 [ext_resource type="Script" path="res://scripts/SizeUp.cs" id="2_hfn3m"]
 [ext_resource type="Texture2D" uid="uid://duxjft1j4ivuv" path="res://sprites/SizeUp.png" id="2_l15u3"]
+[ext_resource type="Texture2D" uid="uid://0sctfvl7bib6" path="res://sprites/RedMushroom.png" id="3_1pu6n"]
 
 [node name="SizeUp" instance=ExtResource("1_cw35j")]
 script = ExtResource("2_hfn3m")
+ChanceForMush = 0.22
+_mushroom = ExtResource("3_1pu6n")
 
 [node name="Icon" parent="." index="1"]
 texture = ExtResource("2_l15u3")

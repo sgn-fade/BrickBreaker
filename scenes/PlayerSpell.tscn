@@ -12,6 +12,7 @@ texture_progress = ExtResource("1_bml64")
 script = ExtResource("2_1clww")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 8.33333
 offset_top = 27.3333
 offset_right = 48.3333
@@ -20,6 +21,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_67oes")
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 13.3333
 offset_top = 25.0
 offset_right = 53.3333

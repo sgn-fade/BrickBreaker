@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=23 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cnhr4eubyd3m4" path="res://scenes/Message.tscn" id="4_4gr5d"]
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="4_ujgtj"]
 [ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="5_nxusd"]
+[ext_resource type="Script" path="res://scenes/BuffSpawner.cs" id="6_7gmp3"]
 [ext_resource type="Script" path="res://scripts/PlayerSpells.cs" id="6_bxq32"]
 [ext_resource type="Texture2D" uid="uid://rlkh2rq2j6i7" path="res://sprites/BallSpeedUpgrade.png" id="7_dqlx6"]
 [ext_resource type="PackedScene" uid="uid://bg4437xnim81y" path="res://scenes/PlayerSpell.tscn" id="7_h6fq7"]
@@ -17,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bsokudm0n53ji" path="res://sprites/button.png" id="11_gwx56"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12_a6yop"]
 [ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="12_famvj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqsri"]
+size = Vector2(411, 209)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqss"]
 size = Vector2(663.5, 126)
@@ -43,6 +47,17 @@ offset_bottom = 1659.0
 rotation = -1.5708
 texture = ExtResource("1_jr1yr")
 expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(970.5, 437.5)
+shape = SubResource("RectangleShape2D_mqsri")
+debug_color = Color(0.810048, 0.371412, 0.476472, 0.42)
+script = ExtResource("6_7gmp3")
+UpgradeList = Array[PackedScene]([ExtResource("8_fhdhx"), ExtResource("12_famvj")])
+
+[node name="Timer" type="Timer" parent="CollisionShape2D"]
+wait_time = 10.0
+autostart = true
 
 [node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("Player", "Spells")]
 layout_mode = 3
@@ -204,9 +219,6 @@ position = Vector2(1008, 184)
 [node name="BrakeBrick34" parent="." instance=ExtResource("5_nxusd")]
 position = Vector2(1200, 184)
 
-[node name="SizeUp" parent="." instance=ExtResource("8_fhdhx")]
-position = Vector2(983, 647)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_inuqw")
 volume_db = -30.0
@@ -241,11 +253,6 @@ theme_override_fonts/font = ExtResource("12_a6yop")
 theme_override_font_sizes/font_size = 100
 text = "RESTART"
 
-[node name="Upgrade" parent="." instance=ExtResource("12_famvj")]
-position = Vector2(852, 594)
-
-[node name="Upgrade2" parent="." instance=ExtResource("12_famvj")]
-position = Vector2(1130, 463)
-
+[connection signal="timeout" from="CollisionShape2D/Timer" to="CollisionShape2D" method="SpawnBuff"]
 [connection signal="body_entered" from="bounds/Area2D" to="." method="DestroyDrop"]
 [connection signal="pressed" from="Control/TextureButton" to="." method="ReloadGame"]
