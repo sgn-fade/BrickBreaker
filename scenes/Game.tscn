@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://duxfujedyw0vh"]
+[gd_scene load_steps=25 format=3 uid="uid://duxfujedyw0vh"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_0f2a5"]
 [ext_resource type="Texture2D" uid="uid://c5qdfqhp6vd0p" path="res://sprites/planet.png" id="1_jr1yr"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bsokudm0n53ji" path="res://sprites/button.png" id="11_gwx56"]
 [ext_resource type="FontFile" uid="uid://bkm60lts17rje" path="res://fonts/000webfont1.ttf" id="12_a6yop"]
 [ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="12_famvj"]
+[ext_resource type="PackedScene" uid="uid://ciaapqy0oygg7" path="res://scenes/Alien.tscn" id="20_mqji2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqsri"]
 size = Vector2(411, 209)
@@ -259,6 +260,9 @@ scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("12_a6yop")
 theme_override_font_sizes/font_size = 100
 text = "RESTART"
+
+[node name="Alien" parent="." instance=ExtResource("20_mqji2")]
+position = Vector2(1145, 725)
 
 [connection signal="timeout" from="CollisionShape2D/Timer" to="CollisionShape2D" method="SpawnBuff"]
 [connection signal="body_entered" from="bounds/Area2D" to="." method="DestroyDrop"]

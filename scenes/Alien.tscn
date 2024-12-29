@@ -1,6 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://3naearwku4gl"]
+[gd_scene load_steps=7 format=3 uid="uid://ciaapqy0oygg7"]
 
 [ext_resource type="Texture2D" uid="uid://c05u1asv4k83a" path="res://sprites/PlayerPlateAlien.png" id="1_0cf3p"]
+[ext_resource type="Script" path="res://scenes/Alien.cs" id="1_3402y"]
+
+[sub_resource type="Animation" id="Animation_xio2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_hv4sc"]
 resource_name = "main"
@@ -30,33 +58,6 @@ tracks/1/keys = {
 "values": [0.0, 230.0, 350.0, 450.0, 550.0, 550.0, 650.0, 750.0, 850.0, 950.0, 950.0, 1050.0, 1150.0, 1250.0]
 }
 
-[sub_resource type="Animation" id="Animation_xio2n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D/PathFollow2D/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Path2D/PathFollow2D:progress")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_marae"]
 _data = {
 "RESET": SubResource("Animation_xio2n"),
@@ -72,6 +73,8 @@ point_count = 12
 [node name="Alien" type="Node2D"]
 position = Vector2(303, 420)
 scale = Vector2(3, 3)
+script = ExtResource("1_3402y")
+ChanceForAlien = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -81,6 +84,7 @@ autoplay = "main"
 
 [node name="Path2D" type="Path2D" parent="."]
 process_mode = 3
+position = Vector2(113.667, -15.6667)
 curve = SubResource("Curve2D_l8dw6")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
@@ -93,3 +97,6 @@ loop = false
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 rotation = -0.0191614
 texture = ExtResource("1_0cf3p")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
