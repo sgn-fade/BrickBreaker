@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0p40wtl1jeek"]
+[gd_scene load_steps=7 format=3 uid="uid://b0p40wtl1jeek"]
 
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="1_e0w22"]
+[ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="2_uk3lx"]
 [ext_resource type="Script" path="res://scenes/BuffSpawner.cs" id="3_ldhk4"]
 [ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="4_vpf3f"]
 [ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="5_7ry06"]
@@ -11,7 +12,64 @@ size = Vector2(411, 209)
 [node name="BrickLvl" type="Node2D"]
 
 [node name="BrakeBrick3" parent="." instance=ExtResource("1_e0w22")]
-position = Vector2(964, 740)
+position = Vector2(1125, 145)
+
+[node name="BrakeBrick5" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(860, 145)
+
+[node name="BrakeBrick6" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(946, 145)
+
+[node name="BrakeBrick7" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1035, 145)
+
+[node name="BrakeBrick4" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(771, 145)
+
+[node name="BrakeBrick8" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1125, 113)
+
+[node name="BrakeBrick9" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(860, 113)
+
+[node name="BrakeBrick10" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(946, 113)
+
+[node name="BrakeBrick11" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1035, 113)
+
+[node name="BrakeBrick12" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(771, 113)
+
+[node name="BrakeBrick13" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1125, 81)
+
+[node name="BrakeBrick14" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(860, 81)
+
+[node name="BrakeBrick15" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(946, 81)
+
+[node name="BrakeBrick16" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1035, 81)
+
+[node name="BrakeBrick17" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(771, 81)
+
+[node name="BrakeBrick18" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1125, 49)
+
+[node name="BrakeBrick19" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(860, 49)
+
+[node name="BrakeBrick20" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(946, 49)
+
+[node name="BrakeBrick21" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(1035, 49)
+
+[node name="BrakeBrick22" parent="." instance=ExtResource("1_e0w22")]
+position = Vector2(771, 49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(970.5, 437.5)
@@ -21,7 +79,10 @@ script = ExtResource("3_ldhk4")
 UpgradeList = Array[PackedScene]([ExtResource("4_vpf3f"), ExtResource("5_7ry06")])
 
 [node name="Timer" type="Timer" parent="CollisionShape2D"]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
+
+[node name="BrakeBrick23" parent="." instance=ExtResource("2_uk3lx")]
+position = Vector2(948, 207)
 
 [connection signal="timeout" from="CollisionShape2D/Timer" to="CollisionShape2D" method="SpawnBuff"]

@@ -87,7 +87,7 @@ _gameStatusScreen = NodePath("Control")
 _playerHp = NodePath("PlayerHP")
 _brickLvl = ExtResource("5_6sas3")
 _bossLvl = ExtResource("25_fq7d7")
-ChanceForNyanCat = 0.1
+ChanceForNyanCat = 0.05
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 651.0
@@ -234,7 +234,7 @@ position = Vector2(39, 25)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_epn1d")
 autoplay = "default"
-frame_progress = 0.104374
+frame_progress = 0.0177487
 
 [node name="WinText" type="Label" parent="Control"]
 layout_mode = 0
