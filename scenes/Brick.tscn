@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dgl6i8ydwo8y6"]
 
-[ext_resource type="Script" path="res://scripts/Brick.cs" id="1_l6fda"]
+[ext_resource type="Script" uid="uid://tes2infixt2e" path="res://scripts/Brick.cs" id="1_l6fda"]
 [ext_resource type="Texture2D" uid="uid://dflvmbqx4epcg" path="res://sprites/Brick.png" id="2_l62sm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuhp7"]
@@ -67,7 +67,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b1ewv"]
 _data = {
-"break": SubResource("Animation_f20ok")
+&"break": SubResource("Animation_f20ok")
 }
 
 [node name="BrakeBrick" type="StaticBody2D" node_paths=PackedStringArray("_animationPlayer")]
@@ -102,5 +102,5 @@ scale_amount_curve = SubResource("Curve_3qtsf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_b1ewv")
+&"": SubResource("AnimationLibrary_b1ewv")
 }

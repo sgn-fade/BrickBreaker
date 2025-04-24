@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ca27tcrvgtn0i"]
 
-[ext_resource type="Script" path="res://scripts/Kirby.cs" id="1_644sj"]
+[ext_resource type="Script" uid="uid://beaxnftu6qt34" path="res://scripts/Kirby.cs" id="1_644sj"]
 [ext_resource type="Texture2D" uid="uid://bpwfamab1uh5" path="res://sprites/kirby.png" id="1_llecg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dirfb"]
@@ -117,8 +117,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubn4l"]
 _data = {
-"RESET": SubResource("Animation_n60bk"),
-"main": SubResource("Animation_r67k3")
+&"RESET": SubResource("Animation_n60bk"),
+&"main": SubResource("Animation_r67k3")
 }
 
 [node name="Kirby" type="Node2D"]
@@ -137,6 +137,6 @@ frame = 7
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_ubn4l")
+&"": SubResource("AnimationLibrary_ubn4l")
 }
 autoplay = "main"

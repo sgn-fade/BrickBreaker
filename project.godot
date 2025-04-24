@@ -12,8 +12,8 @@ config_version=5
 
 config/name="BrickBraker"
 run/main_scene="res://scenes/Game.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/icon="uid://cmksufym6mhvu"
 
 [display]
 

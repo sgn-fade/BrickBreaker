@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dil7lg35gvs5w"]
 
-[ext_resource type="Script" path="res://scripts/Ball.cs" id="1_5xffh"]
+[ext_resource type="Script" uid="uid://byvf5e2mw4coj" path="res://scripts/Ball.cs" id="1_5xffh"]
 [ext_resource type="Texture2D" uid="uid://cuabsnqc5w5db" path="res://sprites/Ball.png" id="2_ny8dt"]
 
 [sub_resource type="Curve" id="Curve_6vg5k"]

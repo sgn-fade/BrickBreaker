@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgl6i8ydwo8y6" path="res://scenes/Brick.tscn" id="1_e0w22"]
 [ext_resource type="PackedScene" uid="uid://br022og4aejp7" path="res://scenes/CrystalBrick.tscn" id="2_uk3lx"]
-[ext_resource type="Script" path="res://scenes/BuffSpawner.cs" id="3_ldhk4"]
+[ext_resource type="Script" uid="uid://dcmdxlpljqn44" path="res://scenes/BuffSpawner.cs" id="3_ldhk4"]
 [ext_resource type="PackedScene" uid="uid://dxrnlnegrkgdx" path="res://scenes/size_up.tscn" id="4_vpf3f"]
 [ext_resource type="PackedScene" uid="uid://c6ow0b7l5h662" path="res://scenes/BombUpgrade.tscn" id="5_7ry06"]
 

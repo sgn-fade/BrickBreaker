@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ckx1errnqblj0"]
 
-[ext_resource type="Script" path="res://scripts/PlayerHp.cs" id="1_gwxo5"]
+[ext_resource type="Script" uid="uid://owpg4a8htrme" path="res://scripts/PlayerHp.cs" id="1_gwxo5"]
 [ext_resource type="Texture2D" uid="uid://utf60fx5qxj0" path="res://sprites/HpBall-sheet.png" id="2_x4t14"]
 
 [sub_resource type="Curve" id="Curve_ifc2n"]
@@ -104,8 +104,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ahkbc"]
 _data = {
-"RESET": SubResource("Animation_gro17"),
-"hit": SubResource("Animation_y8fn3")
+&"RESET": SubResource("Animation_gro17"),
+&"hit": SubResource("Animation_y8fn3")
 }
 
 [node name="PlayerHP" type="Control" node_paths=PackedStringArray("_sprite")]
@@ -143,5 +143,5 @@ animation = &"new_animation"
 
 [node name="p" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ahkbc")
+&"": SubResource("AnimationLibrary_ahkbc")
 }

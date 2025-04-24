@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxvn0vc2glmcx"]
 
-[ext_resource type="Script" path="res://scripts/KirbyArea.cs" id="1_ekcdj"]
+[ext_resource type="Script" uid="uid://br61c7tci8xy8" path="res://scripts/KirbyArea.cs" id="1_ekcdj"]
 [ext_resource type="PackedScene" uid="uid://ca27tcrvgtn0i" path="res://scenes/Kirby.tscn" id="2_uan08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ik58"]
